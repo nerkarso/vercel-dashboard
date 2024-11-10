@@ -7,11 +7,11 @@ import { searchParamsCache } from '@/lib/search-params';
 import { SearchParams } from 'nuqs/server';
 import { Suspense } from 'react';
 
-interface PageProps {
+interface Props {
   searchParams: Promise<SearchParams>;
 }
 
-export default async function Page({ searchParams }: PageProps) {
+export default async function Page({ searchParams }: Props) {
   searchParamsCache.parse(await searchParams);
 
   return (

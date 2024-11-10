@@ -1,12 +1,21 @@
+import AvatarPopover from '@/components/global/AvatarPopover';
 import TeamSwitcher from '@/components/global/TeamSwitcher';
 import ThemeSwitcher from '@/components/global/ThemeSwitcher';
 import { Button } from '@/components/ui/button';
-import { IMAGE_PLACEHOLDER } from '@/config/constants';
+import { auth } from '@/lib/auth';
 import { LayoutDashboard } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+interface Props {
+  children: React.ReactNode;
+}
+
+export default async function Layout({ children }: Props) {
+  const isAuth = await auth();
+
+  if (!isAuth) redirect('/unauthorized');
+
   return (
     <div className="flex flex-col min-h-screen">
       <header className="border-b sticky top-0 bg-background">
@@ -55,16 +64,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </nav>
           <div className="ml-auto flex items-center space-x-4">
             <ThemeSwitcher />
-            <Button variant="ghost" size="icon">
-              <Image
-                src={IMAGE_PLACEHOLDER}
-                alt="Avatar"
-                className="rounded-full"
-                width={32}
-                height={32}
-              />
-              <span className="sr-only">Profile</span>
-            </Button>
+            <AvatarPopover />
           </div>
         </div>
       </header>
