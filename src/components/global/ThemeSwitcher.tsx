@@ -9,18 +9,26 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Computer, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
 
 export default function ThemeSwitcher() {
   const { theme, setTheme } = useTheme();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
-          {theme === 'light' && <Sun className="h-4 w-4" />}
-          {theme === 'dark' && <Moon className="h-4 w-4" />}
-          {theme === 'system' && <Computer className="h-4 w-4" />}
-        </Button>
+        {isClient && (
+          <Button variant="ghost" size="icon">
+            {theme === 'light' && <Sun className="h-4 w-4" />}
+            {theme === 'dark' && <Moon className="h-4 w-4" />}
+            {theme === 'system' && <Computer className="h-4 w-4" />}
+          </Button>
+        )}
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => setTheme('light')}>

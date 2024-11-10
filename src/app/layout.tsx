@@ -1,7 +1,7 @@
-import { ThemeProvider } from '@/components/ThemeProvider';
-import './globals.css';
-
+import { ThemeProvider } from '@/components/global/ThemeProvider';
 import { Metadata } from 'next';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
+import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Vercel Dashboard',
@@ -15,14 +15,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className="bg-muted/20">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <NuqsAdapter>{children}</NuqsAdapter>
         </ThemeProvider>
       </body>
     </html>
