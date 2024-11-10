@@ -25,13 +25,13 @@ export default function TeamSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="flex items-center gap-2 mr-4">
+        <Button className="flex items-center gap-2 mr-4" variant="ghost">
           <Image
-            src={teams.find((team) => team.name === currentTeam)?.image || ''}
             alt="Team"
             className="rounded-full"
-            width={24}
             height={24}
+            src={teams.find((team) => team.name === currentTeam)?.image || ''}
+            width={24}
           />
           {currentTeam}
           <ChevronDown className="h-4 w-4" />
@@ -41,11 +41,11 @@ export default function TeamSwitcher() {
         {teams.map((team) => (
           <DropdownMenuItem key={team.name} onClick={() => setCurrentTeam(team.name)}>
             <Image
-              src={team.image}
               alt={team.name}
               className="mr-2 rounded-full"
-              width={24}
               height={24}
+              src={team.image}
+              width={24}
             />
             {team.name}
           </DropdownMenuItem>

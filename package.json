@@ -42,7 +42,10 @@
       "next/core-web-vitals",
       "next/typescript",
       "@nerkarso/eslint-config/next"
-    ]
+    ],
+    "rules": {
+      "@typescript-eslint/no-explicit-any": "off"
+    }
   },
   "prettier": "@nerkarso/prettier-config"
 }

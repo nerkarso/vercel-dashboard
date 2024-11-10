@@ -27,8 +27,8 @@ export default async function ProjectsGrid() {
                 </CardTitle>
                 {alias && (
                   <Link
-                    href={`https://${alias}`}
                     className="text-sm text-muted-foreground hover:underline"
+                    href={`https://${alias}`}
                     target="_blank"
                   >
                     {alias}

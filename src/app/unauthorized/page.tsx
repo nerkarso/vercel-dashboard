@@ -7,7 +7,7 @@ export default function Page() {
         <CardHeader className="space-y-3">
           <CardTitle className="text-2xl font-semibold text-center">Unauthorized</CardTitle>
           <CardDescription className="text-center">
-            You are not allowed to see what's behind this page
+            You are not allowed to see what&apos;s behind this page
           </CardDescription>
         </CardHeader>
       </Card>

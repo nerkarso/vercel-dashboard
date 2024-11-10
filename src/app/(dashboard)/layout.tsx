@@ -20,18 +20,18 @@ export default async function Layout({ children }: Props) {
     <div className="flex flex-col min-h-screen">
       <header className="border-b sticky top-0 bg-background">
         <div className="flex h-16 items-center px-4">
-          <Link href="/" className="flex items-center gap-2 font-semibold mr-6">
+          <Link className="flex items-center gap-2 font-semibold mr-6" href="/">
             <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
+              className="h-6 w-6"
               fill="none"
+              height="24"
               stroke="currentColor"
-              strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="h-6 w-6"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <path d="M12 2L2 19.7778H22L12 2Z" />
             </svg>
@@ -39,7 +39,7 @@ export default async function Layout({ children }: Props) {
           </Link>
           <TeamSwitcher />
           <nav className="flex items-center space-x-4 lg:space-x-6">
-            <Button variant="ghost" className="text-sm font-medium" asChild>
+            <Button asChild className="text-sm font-medium" variant="ghost">
               <Link href="/">
                 <LayoutDashboard className="mr-2 h-4 w-4" />
                 Overview

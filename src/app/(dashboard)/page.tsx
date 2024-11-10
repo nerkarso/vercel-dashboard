@@ -27,11 +27,11 @@ export default async function Page({ searchParams }: Props) {
           <ActiveProjectsStats />
         </Suspense>
       </div>
-      <Tabs defaultValue="all" className="space-y-4">
+      <Tabs className="space-y-4" defaultValue="all">
         {/* <TabsList>
           <TabsTrigger value="all">All Projects</TabsTrigger>
         </TabsList> */}
-        <TabsContent value="all" className="space-y-4">
+        <TabsContent className="space-y-4" value="all">
           <ProjectsToolbar />
           <Suspense fallback={<Skeleton className="h-40 max-w-sm" />}>
             <ProjectsGrid />

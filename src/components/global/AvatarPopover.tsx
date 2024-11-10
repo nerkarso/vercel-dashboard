@@ -15,13 +15,13 @@ export default function AvatarPopover() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button size="icon" variant="ghost">
           <Image
-            src={IMAGE_PLACEHOLDER}
             alt="Avatar"
             className="rounded-full"
-            width={32}
             height={32}
+            src={IMAGE_PLACEHOLDER}
+            width={32}
           />
           <span className="sr-only">Profile</span>
         </Button>

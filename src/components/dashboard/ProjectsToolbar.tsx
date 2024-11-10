@@ -15,9 +15,9 @@ export default function ProjectsToolbar() {
       <form className="w-full max-w-sm">
         <Input
           className="bg-background"
-          type="search"
-          placeholder="Search projects and press enter..."
           name="search"
+          placeholder="Search projects and press enter..."
+          type="search"
           value={search ?? ''}
           onChange={(e) => {
             const value = e.target.value;
@@ -28,10 +28,10 @@ export default function ProjectsToolbar() {
       </form>
       <div className="space-x-2">
         <Toggle
-          variant="outline"
-          className="bg-background px-4"
           aria-label="Toggle all"
+          className="bg-background px-4"
           pressed={limit === 999}
+          variant="outline"
           onPressedChange={(pressed) => {
             setQueryStates({ limit: pressed ? 999 : PROJECTS_LIMIT });
             setTimeout(() => window.location.reload(), 500);

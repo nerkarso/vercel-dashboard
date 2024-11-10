@@ -23,7 +23,7 @@ export default function ThemeSwitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         {isClient && (
-          <Button variant="ghost" size="icon">
+          <Button size="icon" variant="ghost">
             {theme === 'light' && <Sun className="h-4 w-4" />}
             {theme === 'dark' && <Moon className="h-4 w-4" />}
             {theme === 'system' && <Computer className="h-4 w-4" />}
