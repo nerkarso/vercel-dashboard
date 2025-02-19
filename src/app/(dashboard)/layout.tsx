@@ -1,9 +1,7 @@
 import AvatarPopover from '@/components/global/AvatarPopover';
 import TeamSwitcher from '@/components/global/TeamSwitcher';
 import ThemeSwitcher from '@/components/global/ThemeSwitcher';
-import { Button } from '@/components/ui/button';
 import { auth } from '@/lib/auth';
-import { LayoutDashboard } from 'lucide-react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
@@ -18,17 +16,13 @@ export default async function Layout({ children }: Props) {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="border-b sticky top-0 bg-background">
-        <div className="flex h-16 items-center px-4">
+      <header className="border-b sticky top-0 bg-background z-20">
+        <div className="flex h-16 items-center px-6">
           <Link className="flex items-center gap-2 font-semibold mr-6" href="/">
             <svg
               className="h-6 w-6"
-              fill="none"
+              fill="currentColor"
               height="24"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
               viewBox="0 0 24 24"
               width="24"
               xmlns="http://www.w3.org/2000/svg"
@@ -38,30 +32,6 @@ export default async function Layout({ children }: Props) {
             <span className="sr-only">Home</span>
           </Link>
           <TeamSwitcher />
-          <nav className="flex items-center space-x-4 lg:space-x-6">
-            <Button asChild className="text-sm font-medium" variant="ghost">
-              <Link href="/">
-                <LayoutDashboard className="mr-2 h-4 w-4" />
-                Overview
-              </Link>
-            </Button>
-            {/* <Button variant="ghost" className="text-sm font-medium text-muted-foreground">
-              <GitBranch className="mr-2 h-4 w-4" />
-              Deployments
-            </Button>
-            <Button variant="ghost" className="text-sm font-medium text-muted-foreground">
-              <Globe className="mr-2 h-4 w-4" />
-              Domains
-            </Button>
-            <Button variant="ghost" className="text-sm font-medium text-muted-foreground">
-              <Users className="mr-2 h-4 w-4" />
-              Team
-            </Button>
-            <Button variant="ghost" className="text-sm font-medium text-muted-foreground">
-              <Settings className="mr-2 h-4 w-4" />
-              Settings
-            </Button> */}
-          </nav>
           <div className="ml-auto flex items-center space-x-4">
             <ThemeSwitcher />
             <AvatarPopover />

@@ -19,7 +19,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href={IMAGE_PLACEHOLDER} />
       </head>
-      <body className="bg-muted/20">
+      <body>
         <ThemeProvider
           disableTransitionOnChange
           enableSystem

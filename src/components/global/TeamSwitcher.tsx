@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { IMAGE_PLACEHOLDER } from '@/config/constants';
-import { ChevronDown } from 'lucide-react';
+import { ChevronsUpDown } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -25,7 +25,7 @@ export default function TeamSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="flex items-center gap-2 mr-4" variant="ghost">
+        <Button className="flex items-center gap-2 mr-4 px-2" variant="ghost">
           <Image
             alt="Team"
             className="rounded-full"
@@ -34,7 +34,7 @@ export default function TeamSwitcher() {
             width={24}
           />
           {currentTeam}
-          <ChevronDown className="h-4 w-4" />
+          <ChevronsUpDown className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">

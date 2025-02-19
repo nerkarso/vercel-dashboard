@@ -3,7 +3,7 @@ import { searchParamsCache } from '@/lib/search-params';
 import { getProjects } from '@/lib/vercel/api';
 import { ReadyState } from '@/lib/vercel/types';
 import { formatDistanceToNow } from 'date-fns';
-import { GitBranch, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import Link from 'next/link';
 
 export default async function ProjectsGrid() {
@@ -19,8 +19,8 @@ export default async function ProjectsGrid() {
           : 'never';
 
         return (
-          <Card key={i}>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0">
+          <Card key={i} className="flex flex-col">
+            <CardHeader className="flex sm:flex-row justify-between items-start p-5 gap-1 flex-col">
               <div>
                 <CardTitle className="text-base font-medium">
                   <span>{project?.name}</span>
@@ -35,14 +35,11 @@ export default async function ProjectsGrid() {
                   </Link>
                 )}
               </div>
-              <GitBranch className="h-4 w-4 text-muted-foreground" />
+              <ProjectReadyState state={latestDeployment?.readyState} />
             </CardHeader>
-            <CardContent>
+            <CardContent className="mt-auto p-5 pt-0">
               <div className="text-xs text-muted-foreground">
                 Last deployed {latestDeploymentDate}
-              </div>
-              <div className="mt-3 flex items-center space-x-2">
-                <ProjectReadyState state={latestDeployment?.readyState} />
               </div>
             </CardContent>
           </Card>
@@ -53,27 +50,27 @@ export default async function ProjectsGrid() {
 }
 
 function ProjectReadyState({ state }: { state: ReadyState }) {
-  switch (state) {
-    case 'BUILDING':
-      return (
-        <>
-          <Loader2 className="h-4 w-4 animate-spin text-yellow-500" />
-          <span className="text-xs font-medium text-yellow-500">Deploying</span>
-        </>
-      );
-    case 'READY':
-      return (
-        <>
-          <div className="h-2 w-2 rounded-full bg-green-500" />
-          <span className="text-xs font-medium">Production</span>
-        </>
-      );
-    default:
-      return (
-        <>
-          <div className="h-2 w-2 rounded-full bg-gray-500" />
-          <span className="text-xs font-medium">Unknown</span>
-        </>
-      );
-  }
+  const stateConfig = {
+    BUILDING: {
+      icon: <Loader2 className="h-4 w-4 animate-spin text-yellow-500" />,
+      text: 'Deploying',
+    },
+    READY: {
+      icon: <div className="h-2 w-2 rounded-full bg-green-500" />,
+      text: 'Production',
+    },
+    UNKNOWN: {
+      icon: <div className="h-2 w-2 rounded-full bg-gray-500" />,
+      text: 'Unknown',
+    },
+  };
+
+  const { icon, text } = stateConfig[state] || stateConfig.UNKNOWN;
+
+  return (
+    <div className="flex items-center gap-2 bg-muted px-2.5 py-1 rounded-full">
+      {icon}
+      <span className="text-xs font-medium">{text}</span>
+    </div>
+  );
 }

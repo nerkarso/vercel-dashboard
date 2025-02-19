@@ -26,7 +26,7 @@ export default function AvatarPopover() {
           <span className="sr-only">Profile</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start">
+      <DropdownMenuContent align="end">
         <DropdownMenuItem
           onClick={async () => {
             await logout();

@@ -1,9 +1,15 @@
 'use client';
 
 import { Input } from '@/components/ui/input';
-import { Toggle } from '@/components/ui/toggle';
-import { PROJECTS_LIMIT } from '@/config/constants';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 import { searchParamsParsers } from '@/lib/search-params';
+import { Search } from 'lucide-react';
 import { useQueryStates } from 'nuqs';
 
 export default function ProjectsToolbar() {
@@ -11,12 +17,13 @@ export default function ProjectsToolbar() {
   const { search, limit } = searchParams;
 
   return (
-    <div className="flex justify-between gap-2 flex-wrap">
-      <form className="w-full max-w-sm">
+    <div className="flex justify-between gap-3 flex-wrap">
+      <form className="w-full max-w-sm flex items-center relative">
+        <Search className="w-5 h-5 text-muted-foreground absolute left-3 pointer-events-none" />
         <Input
-          className="bg-background"
+          className="bg-muted/20 pl-10 h-10"
           name="search"
-          placeholder="Search projects and press enter..."
+          placeholder="Search projects..."
           type="search"
           value={search ?? ''}
           onChange={(e) => {
@@ -26,19 +33,33 @@ export default function ProjectsToolbar() {
           }}
         />
       </form>
-      <div className="space-x-2">
-        <Toggle
-          aria-label="Toggle all"
-          className="bg-background px-4"
-          pressed={limit === 999}
-          variant="outline"
-          onPressedChange={(pressed) => {
-            setQueryStates({ limit: pressed ? 999 : PROJECTS_LIMIT });
+      <div className="gap-x-3 gap-y-2 flex items-center flex-col basis-full sm:basis-auto sm:flex-row">
+        <Select onValueChange={(value) => {}}>
+          <SelectTrigger className="h-10">
+            <SelectValue placeholder="Select density" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="default">Default</SelectItem>
+            <SelectItem value="compact">Compact</SelectItem>
+            <SelectItem value="comfortable">Comfortable</SelectItem>
+          </SelectContent>
+        </Select>
+        <Select
+          onValueChange={(value) => {
+            setQueryStates({ limit: value === 'all' ? 999 : Number(value) });
             setTimeout(() => window.location.reload(), 500);
           }}
         >
-          Show All
-        </Toggle>
+          <SelectTrigger className="h-10">
+            <SelectValue placeholder="Select limit" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="10">10</SelectItem>
+            <SelectItem value="20">20</SelectItem>
+            <SelectItem value="30">30</SelectItem>
+            <SelectItem value="all">Show All</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
     </div>
   );
