@@ -1,5 +1,6 @@
 import { ThemeProvider } from '@/components/global/ThemeProvider';
 import { APP_DESCRIPTION, APP_TITLE, IMAGE_PLACEHOLDER } from '@/config/constants';
+import { TRPCReactProvider } from '@/trpc/client';
 import { Metadata } from 'next';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import './globals.css';
@@ -26,7 +27,9 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="system"
         >
-          <NuqsAdapter>{children}</NuqsAdapter>
+          <NuqsAdapter>
+            <TRPCReactProvider>{children}</TRPCReactProvider>
+          </NuqsAdapter>
         </ThemeProvider>
       </body>
     </html>

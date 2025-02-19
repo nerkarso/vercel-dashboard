@@ -19,7 +19,7 @@ export default async function ProjectsGrid() {
           : 'never';
 
         return (
-          <Card key={i} className="flex flex-col bg-muted/10">
+          <Card key={i} className="flex flex-col bg-muted/10 shadow-none">
             <CardHeader className="flex sm:flex-row justify-between items-start p-5 gap-1 flex-col">
               <div>
                 <CardTitle className="text-base font-medium">
