@@ -16,7 +16,6 @@ export default async function Image() {
       <div tw="h-full w-full flex flex-col items-center justify-center bg-white relative">
         {/* Background Grid Pattern */}
         <div
-          tw="absolute inset-0 opacity-30"
           style={{
             backgroundImage: `
               linear-gradient(to right, #E5E7EB 1px, transparent 1px),
@@ -24,6 +23,7 @@ export default async function Image() {
             `,
             backgroundSize: '48px 48px',
           }}
+          tw="absolute inset-0 opacity-30"
         />
         <div tw="flex flex-col items-center bg-white rounded-3xl shadow-xl p-16 relative">
           <h1 tw="text-6xl text-black">{APP_TITLE}</h1>

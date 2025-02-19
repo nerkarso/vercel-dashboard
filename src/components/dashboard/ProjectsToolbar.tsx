@@ -21,7 +21,7 @@ export default function ProjectsToolbar() {
       <form className="w-full max-w-sm flex items-center relative">
         <Search className="w-5 h-5 text-muted-foreground absolute left-3 pointer-events-none" />
         <Input
-          className="bg-muted/20 pl-10 h-10"
+          className="bg-muted/10 pl-10 h-10"
           name="search"
           placeholder="Search projects..."
           type="search"

@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en">
       <head>
-        <link rel="icon" href={IMAGE_PLACEHOLDER} />
+        <link href={IMAGE_PLACEHOLDER} rel="icon" />
       </head>
       <body>
         <ThemeProvider
