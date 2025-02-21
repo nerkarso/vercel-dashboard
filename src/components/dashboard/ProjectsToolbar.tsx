@@ -9,12 +9,19 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { searchParamsParsers } from '@/lib/search-params';
+import { debounce } from 'lodash';
 import { Search } from 'lucide-react';
 import { useQueryStates } from 'nuqs';
+import { useState } from 'react';
 
 export default function ProjectsToolbar() {
   const [searchParams, setQueryStates] = useQueryStates(searchParamsParsers);
   const { search, density, limit } = searchParams;
+  const [searchInput, setSearchInput] = useState(search);
+
+  const debouncedSearch = debounce((value, setQueryStates) => {
+    setQueryStates({ search: value });
+  }, 500);
 
   return (
     <div className="flex justify-between gap-3 flex-wrap">
@@ -25,10 +32,10 @@ export default function ProjectsToolbar() {
           name="search"
           placeholder="Search projects..."
           type="search"
-          value={search ?? ''}
+          value={searchInput}
           onChange={(e) => {
-            const value = e.target.value;
-            setQueryStates({ search: value });
+            setSearchInput(e.target.value);
+            debouncedSearch(e.target.value, setQueryStates);
           }}
         />
       </div>
