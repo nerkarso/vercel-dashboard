@@ -3,6 +3,7 @@ import { createSearchParamsCache, parseAsInteger, parseAsString } from 'nuqs/ser
 
 export const searchParamsParsers = {
   search: parseAsString.withDefault(''),
+  density: parseAsString.withDefault('default'),
   limit: parseAsInteger.withDefault(PROJECTS_LIMIT),
 };
 

@@ -14,11 +14,11 @@ import { useQueryStates } from 'nuqs';
 
 export default function ProjectsToolbar() {
   const [searchParams, setQueryStates] = useQueryStates(searchParamsParsers);
-  const { search, limit } = searchParams;
+  const { search, density, limit } = searchParams;
 
   return (
     <div className="flex justify-between gap-3 flex-wrap">
-      <form className="w-full max-w-sm flex items-center relative">
+      <div className="w-full max-w-sm flex items-center relative">
         <Search className="w-5 h-5 text-muted-foreground absolute left-3 pointer-events-none" />
         <Input
           className="bg-muted/10 pl-10 h-10"
@@ -29,35 +29,38 @@ export default function ProjectsToolbar() {
           onChange={(e) => {
             const value = e.target.value;
             setQueryStates({ search: value });
-            if (value === '') setTimeout(() => window.location.reload(), 500);
           }}
         />
-      </form>
+      </div>
       <div className="gap-x-3 gap-y-2 flex items-center flex-col basis-full sm:basis-auto sm:flex-row">
-        <Select onValueChange={(value) => {}}>
+        <Select
+          value={density}
+          onValueChange={(value) => {
+            setQueryStates({ density: value });
+          }}
+        >
           <SelectTrigger className="h-10">
             <SelectValue placeholder="Select density" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="default">Default</SelectItem>
-            <SelectItem value="compact">Compact</SelectItem>
-            <SelectItem value="comfortable">Comfortable</SelectItem>
+            <SelectItem value="default">Default density</SelectItem>
+            <SelectItem value="compact">Compact density</SelectItem>
           </SelectContent>
         </Select>
         <Select
+          value={limit ? String(limit) : '9'}
           onValueChange={(value) => {
-            setQueryStates({ limit: value === 'all' ? 999 : Number(value) });
-            setTimeout(() => window.location.reload(), 500);
+            setQueryStates({ limit: Number(value) });
           }}
         >
           <SelectTrigger className="h-10">
             <SelectValue placeholder="Select limit" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="10">10</SelectItem>
-            <SelectItem value="20">20</SelectItem>
-            <SelectItem value="30">30</SelectItem>
-            <SelectItem value="all">Show All</SelectItem>
+            <SelectItem value="9">Show 9 items</SelectItem>
+            <SelectItem value="18">Show 18 items</SelectItem>
+            <SelectItem value="36">Show 36 items</SelectItem>
+            <SelectItem value="999">Show all items</SelectItem>
           </SelectContent>
         </Select>
       </div>
