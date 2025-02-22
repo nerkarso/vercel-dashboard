@@ -1,7 +1,8 @@
-import AvatarPopover from '@/components/global/AvatarPopover';
 import TeamSwitcher from '@/components/global/TeamSwitcher';
 import ThemeSwitcher from '@/components/global/ThemeSwitcher';
 import { auth } from '@/lib/auth';
+import { SignedIn, UserButton } from '@clerk/nextjs';
+import { dark } from '@clerk/themes';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
@@ -34,7 +35,13 @@ export default async function Layout({ children }: Props) {
           <TeamSwitcher />
           <div className="ml-auto flex items-center space-x-4">
             <ThemeSwitcher />
-            <AvatarPopover />
+            <SignedIn>
+              <UserButton
+                appearance={{ baseTheme: dark }}
+                userProfileMode="navigation"
+                userProfileUrl="/user-profile"
+              />
+            </SignedIn>
           </div>
         </div>
       </header>

@@ -66,3 +66,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Clerk */
+.cl-navbarMobileMenuRow,
+.cl-navbar,
+.cl-scrollBox,
+.cl-footer {
+  background: #0a0a0a;
+}
+.cl-userProfile-root,
+.cl-cardBox {
+  width: 100%;
+}
+.cl-cardBox {
+  height: auto;
+  min-height: 85vh;
+}
