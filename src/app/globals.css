@@ -76,12 +76,12 @@
 .cl-userProfile-root {
   width: 100%;
 }
-.cl-cardBox {
+.cl-userProfile-root .cl-cardBox {
   height: auto;
   width: 100%;
   min-height: 85vh;
 }
-.cl-scrollBox {
+.cl-userProfile-root .cl-scrollBox {
   background: #0a0a0a;
   height: auto;
   flex: 1;
