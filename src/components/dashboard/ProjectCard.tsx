@@ -35,7 +35,7 @@ export default function ProjectCard({ project, density }: Props) {
             </Link>
           )}
         </div>
-        <ProjectReadyState state={latestDeployment?.readyState} hideText={isCompact} />
+        <ProjectReadyState hideText={isCompact} state={latestDeployment?.readyState} />
       </CardHeader>
       {!isCompact && (
         <CardContent className="mt-auto p-5 pt-0">

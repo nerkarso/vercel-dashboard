@@ -1,20 +1,14 @@
 import TeamSwitcher from '@/components/global/TeamSwitcher';
 import ThemeSwitcher from '@/components/global/ThemeSwitcher';
-import { auth } from '@/lib/auth';
 import { SignedIn, UserButton } from '@clerk/nextjs';
 import { dark } from '@clerk/themes';
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
 
 interface Props {
   children: React.ReactNode;
 }
 
 export default async function Layout({ children }: Props) {
-  const isAuth = await auth();
-
-  if (!isAuth) redirect('/unauthorized');
-
   return (
     <div className="flex flex-col min-h-screen">
       <header className="border-b sticky top-0 bg-background z-20">

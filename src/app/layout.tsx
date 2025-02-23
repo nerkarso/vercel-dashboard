@@ -1,4 +1,5 @@
 import { ThemeProvider } from '@/components/global/ThemeProvider';
+import { Toaster } from '@/components/ui/sonner';
 import { APP_DESCRIPTION, APP_TITLE, IMAGE_PLACEHOLDER } from '@/config/constants';
 import { TRPCReactProvider } from '@/trpc/client';
 import { ClerkProvider } from '@clerk/nextjs';
@@ -33,6 +34,7 @@ export default function RootLayout({
               <TRPCReactProvider>{children}</TRPCReactProvider>
             </ClerkProvider>
           </NuqsAdapter>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

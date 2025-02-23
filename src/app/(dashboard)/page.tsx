@@ -12,10 +12,20 @@ interface Props {
 export default async function Page({ searchParams }: Props) {
   searchParamsCache.parse(await searchParams);
 
+  // TODO: add fallback when no account is selected
+
   return (
     <div className="max-w-screen-2xl mx-auto space-y-6">
       <ProjectsToolbar />
-      <Suspense fallback={<Skeleton className="h-40 max-w-sm" />}>
+      <Suspense
+        fallback={
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <Skeleton key={i} className="h-32 rounded-xl" />
+            ))}
+          </div>
+        }
+      >
         <ProjectsGrid />
       </Suspense>
     </div>

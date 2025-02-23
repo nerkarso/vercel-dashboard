@@ -13,7 +13,7 @@ export default function ProjectsGrid() {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {data?.projects?.map((project, i) => (
-        <ProjectCard key={i} project={project} density={density} />
+        <ProjectCard key={i} density={density} project={project} />
       ))}
     </div>
   );
