@@ -35,7 +35,9 @@ export default function TeamSwitcher({ current, teams }: Props) {
       <DropdownMenuTrigger asChild>
         <Button className="flex items-center gap-2 mr-4 px-2" variant="ghost">
           <Avatar className="h-6 w-6 text-sm">
-            <AvatarFallback className="bg-blue-600">{currentTeam?.name?.[0] ?? 'A'}</AvatarFallback>
+            <AvatarFallback className="bg-blue-600 uppercase">
+              {currentTeam?.name?.[0] ?? 'A'}
+            </AvatarFallback>
           </Avatar>
           {currentTeam?.name ?? 'Select account'}
           <ChevronsUpDown className="h-4 w-4" />
