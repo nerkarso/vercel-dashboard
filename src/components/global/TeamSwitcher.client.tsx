@@ -30,6 +30,8 @@ export default function TeamSwitcher({ current, teams }: Props) {
 
   const switchTeamMutation = api.user.vercelAccount.switch.useMutation();
 
+  const utils = api.useUtils();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -49,7 +51,11 @@ export default function TeamSwitcher({ current, teams }: Props) {
             key={team.id}
             onClick={() => {
               setCurrentTeam(team);
-              switchTeamMutation.mutate(team.id);
+              switchTeamMutation.mutate(team.id, {
+                onSuccess: () => {
+                  utils.project.getAll.invalidate();
+                },
+              });
             }}
           >
             <Avatar className="h-6 w-6 text-sm mr-1">
